@@ -1,9 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'open-uri'
+require 'json'
+
+
+  BASE_URL = 'https://fakestoreapi.com/products'
+  response = URI.open(BASE_URL).read
+  data = JSON.parse(response)
+
+  User.destroy_all
+  Product.destroy_all
+
+  user = User.create!(first_name: "Prunelle", last_name: "Leclerc", phone_number: "0613668429", address: "46 Amarina Avenue", email: "prunelleleclerc@gmail.com", password: "azerty")
+
+  data.each do |product|
+    Product.create!(
+      title: product["title"],
+      price: product["price"],
+      category: product["category"],
+      description: product["description"],
+      rating: product.dig("rating", "rate"),
+      user: user
+    )
+  end
+
+  puts "Products seeded successfully."
