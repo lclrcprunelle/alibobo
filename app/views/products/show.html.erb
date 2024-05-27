@@ -1,1 +1,7 @@
-<h1>test</h1>
+<div class="container">
+  <%= cl_image_tag @product.photo.key, class: "card-img-top" %>
+  <h1><%= @product.title%></h1>
+  <h3><%= @product.price%></h3>
+  <h3><%= @product.description%></h3>
+
+</div>
