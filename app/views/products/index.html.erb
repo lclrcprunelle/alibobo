@@ -13,6 +13,7 @@
           <h6 class="card-title"><%= product.category.upcase %></h6>
           <p class="card-text"><%= product.description %></p>
           <p class="card-text"><small class="text-muted"> $AUS <%= product.price %> </small></p>
+          <button class="btn btn-primary"> <%= link_to "voir détails", product_path(product) %></button>
         </div>
       </div>
     <% end %>
