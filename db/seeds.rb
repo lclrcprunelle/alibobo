@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'json'
 
-
 BASE_URL = 'https://fakestoreapi.com/products'
 response = URI.open(BASE_URL).read
 data = JSON.parse(response)
@@ -22,7 +21,8 @@ data.each do |product|
           )
 
   file = URI.open(product["image"])
-  prod.photo.attach(io: file, filename: "#{prod.title}.jpg", content_type: "image/jpg")
+  prod.photo.attach(io: file, filename: "#{prod.title}.jpeg", content_type: "image/jpeg")
+  puts "product creatd #{prod.title}"
 end
 
 puts "Products seeded successfully."
