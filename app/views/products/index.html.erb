@@ -2,7 +2,12 @@
   <div class="card-deck row">
     <% @products.each do |product|%>
       <div class="card col-3 gap-5">
-        <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap">
+        <% if product.photo.attached? %>
+          <%= cl_image_tag product.photo.key, class: "card-img-top" %>
+        <% else %>
+          <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap">
+        <% end %>
+
         <div class="card-body">
           <h5 class="card-title"><%= product.title.capitalize %></h5>
           <h6 class="card-title"><%= product.category.upcase %></h6>
