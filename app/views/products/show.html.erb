@@ -1,16 +1,26 @@
-<div class="container" data-controller="booking-form">
-  <%= cl_image_tag @product.photo.key %>
-  <h1><%= @product.title %></h1>
-  <h3> $ <span data-booking-form-target="price" data-price="<%= @product.price %>"><%= @product.price %></span>/ day</h3>
-  <h3><%= @product.description %></h3>
-
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Book
-  </button>
-
-  <%= link_to "Edit my product", edit_product_path(@product) %>
-  <%= link_to "Delete my product", product_path(@product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  <%= link_to "Go back", products_path %>
+<div class="container d-inline-block mx-5" style="height: 900px" data-controller="booking-form">
+  <%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, products_path, class: 'btn btn-outline-secondary rounded-circle mx-4 mt-2 justify-content-start' %>
+  <div class="d-flex justify-content-between py-4" style="height: 50%">
+    <%= cl_image_tag @product.photo.key, class: "m-4 rounded"%>
+    <div class="card mx-3 shadow h-auto">
+      <div class="card-body d-flex flex-column justify-content-between h-auto">
+        <div>
+          <h2><strong><%= @product.title %></strong></h2>
+          <h3 class="my-3"> $ <span data-booking-form-target="price" data-price="<%= @product.price %>"><%= @product.price %></span> / day</h3>
+          <h6 class="my-4"><%= @product.description %></h5>
+  </div>
+        <div class="buttons mb-2 d-flex justify-content-between">
+          <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Book
+          </button>
+          <div>
+            <%= link_to "Edit my product", edit_product_path(@product), class: 'btn btn-outline-primary' %>
+            <%= link_to "Delete my product", product_path(@product), class: 'btn btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
