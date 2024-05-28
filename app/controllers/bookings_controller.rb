@@ -3,19 +3,16 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
 
-  def new
-    set_product
-    @booking = Booking.new
-  end
-
   def create
     set_product
     @booking = Booking.new(booking_params)
     @booking.product = @product
+    @booking.user = current_user
+
     if @booking.save
       redirect_to products_path
     else
-      render :new, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -26,6 +23,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :total_price)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
