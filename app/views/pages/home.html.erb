@@ -1,15 +1,29 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.freepik.com/free-vector/aisle-grocery-store-shelves-vector-background_107791-19118.jpg?t=st=1716821632~exp=1716825232~hmac=2fd2d5a42df3d25ab5ea8cdad476dabf8dd170c174950a6e93884df422f66e81&w=1800);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.lonelyplanet.fr/s3fs-public/styles/wide/public/2023-12/souks.jpg.webp?itok=qiNx1jRI);">
   <div class="container">
     <h1><strong>AliBobo</strong></h1>
     <p>Rent everything you want</p>
-  </div>
-  <div>
-    <form class="d-flex px-5" role="search">
+
+    <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <%= link_to products_path, class: "btn btn-outline-light" do %>
         <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>
     </form>
   </div>
-    <button class="btn btn-outline-light px-5 mx-6" type="submit" > <%= link_to "Rent a product", new_product_path %></button>
+</div>
+
+
+<div class="container">
+      <h1 class="mt-5">Top products to rent</h1>
+
+ <% @products.sample(3).each do |product| %>
+  <div class="card col-3 gap-5">
+    <% if product.photo.attached? %>
+    <%= cl_image_tag product.photo.key, class: "card-img-top" %>
+      <% else %>
+        <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap">
+    <% end %>
+  </div>
+<% end %>
+
 </div>
