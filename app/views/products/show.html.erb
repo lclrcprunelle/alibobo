@@ -1,7 +1,36 @@
-<div class="container">
-  <%= cl_image_tag @product.photo.key, class: "card-img-top" %>
-  <h1><%= @product.title%></h1>
-  <h3><%= @product.price%></h3>
-  <h3><%= @product.description%></h3>
+<div class="container" data-controller="booking-form">
+  <%= cl_image_tag @product.photo.key, class: "" %>
+  <h1><%= @product.title %></h1>
+  <h3> $ <span data-booking-form-target="price" data-price="<%= @product.price %>"><%= @product.price %></span>/ day</h3>
+  <h3><%= @product.description %></h3>
 
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Book
+  </button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Book</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-container" data-booking-form-target="togglable">
+            <%= simple_form_for [@product, @booking] do |f| %>
+              <span data-booking-form-target="start"><%= f.input :start_date,  as: :string, input_html: { data: { controller: "datepicker" } } %></span>
+              <span data-booking-form-target="end"><%= f.input :end_date,  as: :string, input_html: { data: { controller: "datepicker" } } %></span>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <p>Total price :</p>
+          <div class="btn-form">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= f.submit "Book", class: 'btn btn-primary' %>
+          </div>
+        </div>
+            <% end %>
+      </div>
+    </div>
+  </div>
 </div>
