@@ -4,48 +4,37 @@
     <%= cl_image_tag @product.photo.key, class: "m-4 rounded"%>
     <div class="card mx-3 shadow h-auto">
       <div class="card-body d-flex flex-column justify-content-between h-auto">
-        <div class="card-text">
+        <div>
           <h2><strong><%= @product.title %></strong></h2>
           <h3 class="my-3"> $ <span data-booking-form-target="price" data-price="<%= @product.price %>"><%= @product.price %></span> / day</h3>
-          <h6 class="my-4"><%= @product.description %></h5>
-  </div>
-        <div class="buttons mb-2 d-flex justify-content-between">
-          <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Book
-          </button>
-          <div>
-            <%= link_to "Edit my product", edit_product_path(@product), class: 'btn btn-outline-primary' %>
-            <%= link_to "Delete my product", product_path(@product), class: 'btn btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          </div>
+          <h6 class="my-4"><%= @product.description %></h6>
+        </div>
+      </div>
+      <div class="buttons mb-2 d-flex justify-content-between">
+        <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Book
+        </button>
+        <div>
+          <%= link_to "Edit my product", edit_product_path(@product), class: 'btn btn-outline-primary' %>
+          <%= link_to "Delete my product", product_path(@product), class: 'btn btn-outline-danger', data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Book</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="form-container" data-booking-form-target="togglable">
-          <%= simple_form_for [@product, @booking] do |f| %>
-            <span data-booking-form-target="start"><%= f.input :start_date,  as: :string, input_html: { data: { controller: "datepicker" } } %></span>
-            <span data-booking-form-target="end"><%= f.input :end_date,  as: :string, input_html: { data: { controller: "datepicker" } } %></span>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Book</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div data-controller="fetch">
+          <%= render "bookings/form", product: @product, booking: @booking %>
         </div>
       </div>
-      <div class="modal-footer justify-content-between">
-        <p>Total price :</p>
-        <div class="btn-form">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <%= f.submit "Book", class: 'btn btn-primary' %>
-        </div>
-      </div>
-          <% end %>
     </div>
   </div>
-</div>
 </div>

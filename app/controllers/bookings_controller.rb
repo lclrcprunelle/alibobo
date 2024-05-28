@@ -1,10 +1,15 @@
 class BookingsController < ApplicationController
+  before_action :set_product, only: [:new, :create]
+
   def index
     @bookings = Booking.all
   end
 
+  def new
+    @booking = Booking.new
+  end
+
   def create
-    set_product
     @booking = Booking.new(booking_params)
     @booking.product = @product
     @booking.user = current_user
@@ -12,7 +17,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to products_path
     else
-      render :show, status: :unprocessable_entity
+      render :new, layout: false, status: :unprocessable_entity
     end
   end
 
@@ -23,6 +28,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :total_price)
   end
 end

@@ -1,0 +1,19 @@
+<%= simple_form_for [@product, @booking], html: { data: { fetch_target: :form, action: "submit->fetch#perform" } } do |f| %>
+  <div class="modal-body">
+    <div class="form-container" data-booking-form-target="togglable">
+      <%= f.input :start_date,  as: :string, input_html: { data: { controller: "datepicker", booking_form_target: 'start', action: "change->booking-form#compute" } } %>
+      <%= f.input :end_date,  as: :string, input_html: { data: { controller: "datepicker", booking_form_target: 'end', action: "change->booking-form#compute" } } %>
+      <%= f.input :total_price, label: false, input_html: {class: 'd-none', data: { booking_form_target: 'totalPriceInput' } } %>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <p data-booking-form-target="day"></p>
+    <p data-booking-form-target="totalPrice"></p>
+    <div class="btn-form">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <%= f.submit "Book", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

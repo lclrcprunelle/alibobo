@@ -1,21 +1,9 @@
-<div class="container">
-  <div class="card-deck row">
-    <% @products.each do |product|%>
-      <div class="card col-3 gap-5">
-        <% if product.photo.attached? %>
-          <%= cl_image_tag product.photo.key, class: "card-img-top" %>
-        <% else %>
-          <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap">
-        <% end %>
+<div class="container mt-3">
+  <div class="row pb-3">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://live.staticflickr.com/2184/2243088749_6688158d31_c.jpg)">Our products</div>
+  </div>
 
-        <div class="card-body">
-          <h5 class="card-title"><%= product.title.capitalize %></h5>
-          <h6 class="card-title"><%= product.category.upcase %></h6>
-          <p class="card-text"><%= product.description %></p>
-          <p class="card-text"><small class="text-muted"> $AUS <%= product.price %> </small></p>
-          <button class="btn btn-primary"> <%= link_to "voir détails", product_path(product) %></button>
-        </div>
-      </div>
-    <% end %>
+  <div class="card-deck row row-cols-4 g-4">
+    <%= render @products %>
   </div>
 </div>
