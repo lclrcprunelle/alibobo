@@ -8,7 +8,7 @@ data = JSON.parse(response)
 User.destroy_all
 Product.destroy_all
 
-user = User.create!(first_name: "Prunelle", last_name: "Leclerc", phone_number: "0613668429", address: "46 Amarina Avenue", email: "prunelleleclerc@gmail.com", password: "azerty")
+user = User.create!(first_name: "Prunelle", last_name: "Leclerc", phone_number: "0613668429", address: "46 Amarina Avenue", email: "test@test.com", password: "azerty")
 
 data.each do |product|
   prod = Product.create!(
