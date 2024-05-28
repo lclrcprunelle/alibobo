@@ -12,11 +12,12 @@
   </div>
 </div>
 
+<div class= "back">
 <div class="container">
-      <h1 class="mt-5">Top products to rent</h1>
+      <h1 class=" back pt-5">Top products to rent</h1>
 
  <% @products.sample(3).each do |product| %>
-  <div class="card col-3 gap-5">
+  <div class="card col-3 gap-3">
     <% if product.photo.attached? %>
     <%= cl_image_tag product.photo.key, class: "card-img-top" %>
       <% else %>
@@ -25,4 +26,5 @@
   </div>
 <% end %>
 
+</div>
 </div>
