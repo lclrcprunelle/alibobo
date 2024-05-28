@@ -1,4 +1,5 @@
-<%= simple_form_for @product do |f| %>
+<div class="container">
+  <%= simple_form_for @product do |f| %>
   <%= f.input :title %>
   <%= f.input :price %>
   <%= f.input :category %>
@@ -8,3 +9,5 @@
   <%= f.submit "Edit my product" %>
 <% end %>
   <button> <%= link_to "Go back", product_path(@product) %></button>
+
+</div>

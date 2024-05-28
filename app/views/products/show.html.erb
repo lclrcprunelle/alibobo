@@ -1,6 +1,5 @@
-
 <div class="container" data-controller="booking-form">
-  <%= cl_image_tag @product.photo.key, class: "" %>
+  <%= cl_image_tag @product.photo.key %>
   <h1><%= @product.title %></h1>
   <h3> $ <span data-booking-form-target="price" data-price="<%= @product.price %>"><%= @product.price %></span>/ day</h3>
   <h3><%= @product.description %></h3>
@@ -9,9 +8,9 @@
     Book
   </button>
 
-  <button> <%= link_to "Edit my product", edit_product_path(@product) %></button>
-  <button> <%= link_to "Delete my product", product_path(@product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
-  <button> <%= link_to "Go back", products_path %></button>
+  <%= link_to "Edit my product", edit_product_path(@product) %>
+  <%= link_to "Delete my product", product_path(@product), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <%= link_to "Go back", products_path %>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -20,26 +19,11 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Book</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <div class="form-container" data-booking-form-target="togglable">
-            <%= simple_form_for [@product, @booking] do |f| %>
-              <span data-booking-form-target="start"><%= f.input :start_date,  as: :string, input_html: { data: { controller: "datepicker" } } %></span>
-              <span data-booking-form-target="end"><%= f.input :end_date,  as: :string, input_html: { data: { controller: "datepicker" } } %></span>
-          </div>
+
+        <div data-controller="fetch">
+          <%= render "bookings/form", product: @product, booking: @booking %>
         </div>
-        <div class="modal-footer justify-content-between">
-          <p>Total price :</p>
-          <div class="btn-form">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <%= f.submit "Book", class: 'btn btn-primary' %>
-          </div>
-        </div>
-            <% end %>
       </div>
     </div>
   </div>
-
-
-  
-
-
+</div>
