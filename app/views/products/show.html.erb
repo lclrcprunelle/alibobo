@@ -13,7 +13,6 @@
             <% end %>
           </div>
         <%end %>
-
     </div>
 
     <div class="card shadow h-auto bg bg-light" style="width: 100%">
@@ -25,7 +24,7 @@
           <h6 class="my-3 overflow-auto" style="height: 100px"><%= @product.description %></h6>
 
             <div class="d-flex">
-              <% if @product.rating.present? %>
+               <% if @product.rating.present? %>
                 <% (1..5).each do |i| %>
                    <p><i class="<%= i <= @product.rating ? 'fa-solid' : 'fa-regular' %> fa-star"></i></p>
                 <% end %>
@@ -48,6 +47,14 @@
       </div>
     </div>
   </div>
+
+  <% if @product.in? current_user.reserved_products %>
+    <%= simple_form_for [@product, @review] do |f| %>
+      <%= f.input :description  %>
+      <%= f.input :rating, collection: 1..5  %>
+      <%= f.button :submit %>
+    <% end %>
+  <% end %>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

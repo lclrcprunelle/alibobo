@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :products do
     resources :bookings, only: %i[new create]
+    resources :reviews, only: [:new, :create]
 
     collection do
       get 'myProducts'
