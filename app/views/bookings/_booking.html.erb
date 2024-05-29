@@ -1,7 +1,7 @@
 <div class="col">
   <div class="card bg-light">
-    <% if booking.product.photo.attached? %>
-      <%= cl_image_tag booking.product.photo.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
+    <% if booking.product.photos.attached? %>
+      <%= cl_image_tag booking.product.photos.first.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
     <% else %>
       <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap" width=10% height=10%>
     <% end %>
@@ -9,7 +9,7 @@
     <div class="card-body bg-light pb-0">
         <h5 class="card-title line-clamp-1 product-title"><%= booking.product.title.capitalize %></h5>
         <p class="card-text line-clamp-3 product-description"><%= booking.product.description %></p>
-        <p class="product-category"><i class="fa-solid fa-tag"></i> <%= booking.product.category.upcase %></p>
+        <p class="product-category"><i class="fa-solid fa-tag"></i> <%= booking.product.category.name.upcase %></p>
         <p class="product-price"><small class="text-dark">Total price: <i class="fa-solid fa-dollar-sign"></i> <%= booking.total_price %></small></p>
         <p>From: <%= booking.start_date.strftime("%A %d %B") %> </p>
         <p>To: <%= booking.end_date.strftime("%A %d %B") %></p>
