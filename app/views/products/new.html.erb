@@ -4,7 +4,7 @@
       <%= simple_form_for @product do |f| %>
         <%= f.input :title %>
         <%= f.input :price %>
-        <%= f.input :category, collection: ["Travel", "Electronics", "Men's clothing", "Jewelery", "Women's clothing", "Sport", "Food", "Cosmetic", "+18", "Other"] %>
+        <%= f.association :category %>
         <%= f.input :description %>
         <%= f.input :rating, collection: 1..5 %>
         <%= f.input :photo, as: :file %>
