@@ -8,14 +8,14 @@
         <div>
           <h2><strong><%= @product.title %></strong></h2>
           <h3 class="my-3"> $ <span data-booking-form-target="price" data-price="<%= @product.price %>"><%= @product.price %></span> / day</h3>
-          <h6 class="my-4"><%= @product.description %></h5>
-  </div>
-        <div class="buttons mb-2 d-flex justify-content-between">
-        <% if @product.user != current_user %>
-          <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Book
-          </button>
-        <% end %>
+          <h6 class="my-3 overflow-auto" style="height: 100px"><%= @product.description %></h6>
+        </div>
+        <div class="buttons d-flex justify-content-between">
+          <% if @product.user != current_user %>
+            <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Book
+            </button>
+          <% end %>
           <div>
             <% if @product.user == current_user %>
               <%= link_to "Edit my product", edit_product_path(@product), class: 'btn btn-outline-primary' %>
