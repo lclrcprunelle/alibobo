@@ -2,7 +2,8 @@
   <%= link_to "<i class='fa-solid fa-arrow-left'></i>".html_safe, products_path, class: 'btn btn-outline-secondary rounded-circle mx-4 mt-2 justify-content-start' %>
   <div class="d-flex justify-content-between py-4" style="height: 50%">
     <%= cl_image_tag @product.photo.key, class: "m-4 rounded"%>
-    <div class="card mx-3 shadow h-auto" style="width: 890px">
+    <div class="card mx-3 shadow h-auto bg bg-light" style="width: 890px">
+
       <div class="card-body d-flex flex-column justify-content-between h-auto">
         <div>
           <h2><strong><%= @product.title %></strong></h2>
