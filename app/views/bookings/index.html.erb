@@ -1,0 +1,12 @@
+<div class="container position-relative">
+  <h1 class="text-center my-4">My bookings</h1>
+  <div class="row">
+    <% @bookings.each do |booking| %>
+      <%= render booking  %>
+    <% end %>
+  </div>
+
+  <%= link_to root_path, class: "btn btn-outline-secondary rounded-circle position-absolute top-0 start-0" do %>
+        <i class="fas fa-arrow-left"></i>
+      <% end %>
+</div>
