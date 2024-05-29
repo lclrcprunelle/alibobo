@@ -6,5 +6,20 @@
 }
 
 .back {
-  background-color: #FFF8F7;
+  background-color: salmon;
+}
+
+.size-carousel .img {
+  margin-top: 200px;
+  height: 300px;
+  width: 500px;
+}
+
+.carousel {
+  width: 80%;
+}
+
+.carousel-item {
+  height: 500px;
+  object-fit: cover;
 }
