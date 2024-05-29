@@ -15,7 +15,7 @@
             <%= link_to "Home",root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "All products", products_path, class: "nav-link" %>
           </li>
           <li class="nav-item active">
             <%= link_to "Rent a product",new_product_path, class: "nav-link" %>
@@ -30,9 +30,10 @@
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <p class="text-center border-bottom pb-1"><strong><%= current_user.full_name%></strong></p>
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
+              <%= link_to "My products", myProducts_products_path, class: "dropdown-item" %>
+              <%= link_to "<i class='fa-solid fa-right-to-bracket'></i>".html_safe + "  Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-danger " %>
+
             </div>
 
           </li>

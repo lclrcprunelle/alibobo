@@ -2,15 +2,23 @@
   <div class="container">
     <h1><strong>AliBobo</strong></h1>
     <p>Rent everything you want</p>
-
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <%= link_to products_path, class: "btn btn-outline-light" do %>
-        <i class="fa-solid fa-magnifying-glass"></i>
-      <% end %>
-    </form>
+      <div class="row ">
+        <div class="col-sm-8 my-3">
+          <%= form_with url: products_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Type a keyword"
+            %>
+          <%= submit_tag "Search", name: "", class: "btn btn-outline-light" %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+        </div>
+      </div>
   </div>
 </div>
+
+
 
 <div class="back">
   <div class="container">
@@ -25,7 +33,7 @@
           <% end %>
           <div class="card-body">
             <h5 class="card-title line-clamp-1 product-title"><%= product.title.capitalize %></h5>
-            <p class="product-category "><i class="fa-solid fa-tag"></i> <%= product.category.upcase %></p>
+            <p class="product-category "><i class="fa-solid fa-tag"></i> <%= product.category.name %></p>
             <p class="product-price"><small class="text-dark"><i class="fa-solid fa-dollar-sign"></i> <%= product.price %></small></p>
             <div class="card-body text-center">
               <%= link_to "View details", product_path(product), class: "btn btn-flat", style: "border: 1px solid #000; padding: 10px 20px; border-radius: 5px;" %>

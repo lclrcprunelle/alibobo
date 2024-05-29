@@ -1,0 +1,11 @@
+<h1 class="text-center mt-3">My Products</h1>
+
+<div class="container mt-4 d-flex justify-content-center">
+  <div class="row">
+    <% @products.each do |product| %>
+
+        <%= render product %>
+
+    <% end %>
+  </div>
+</div>

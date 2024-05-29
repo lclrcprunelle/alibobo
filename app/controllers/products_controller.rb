@@ -3,6 +3,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @products = Product.all
+    if params[:query].present?
+      @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def show
@@ -12,6 +16,11 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def myProducts
+    # @products = current_user.products
+    @products = Product.where(user: current_user)
   end
 
   def create
@@ -48,6 +57,8 @@ class ProductsController < ApplicationController
   private
 
   def product_params
+
     params.require(:product).permit(:title, :price, :category, :description, :rating, photos: [])
+
   end
 end
