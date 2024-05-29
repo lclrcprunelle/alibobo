@@ -9,6 +9,5 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :bookings, only: :index
 end
