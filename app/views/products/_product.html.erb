@@ -1,7 +1,7 @@
 <div class="col">
   <div class="card bg-light">
-    <% if product.photo.attached? %>
-      <%= cl_image_tag product.photo.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
+    <% if product.photos.attached? %>
+      <%= cl_image_tag product.photos.first.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
     <% else %>
       <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap" width=10% height=10%>
     <% end %>

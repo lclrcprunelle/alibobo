@@ -1,0 +1,38 @@
+.photo-container {
+  overflow: hidden;
+  height: 200px; /* Ajustez cette valeur selon vos besoins */
+}
+.photo-mosaic {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+ .img-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin-bottom: 30px;
+  gap: 5px;
+
+  img{
+    width: 100%;
+    height: 620px;
+  }
+
+.right-part{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 620px;
+  overflow-y: hidden;
+}
+  .small-img{
+    width: 100%;
+    height: 310px;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+ }
