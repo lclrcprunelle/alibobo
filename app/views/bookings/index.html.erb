@@ -1,8 +1,12 @@
 <div class="container position-relative">
   <h1 class="text-center my-4">My bookings</h1>
   <div class="row">
-    <% @bookings.each do |booking| %>
-      <%= render booking  %>
+    <% if @bookings.length >= 1 %>
+      <% @bookings.each do |booking| %>
+        <%= render booking  %>
+      <% end %>
+    <% else %>
+      <h6 class="text-center">No bookings yet, <%= link_to "All products", products_path %></h6>
     <% end %>
   </div>
 
