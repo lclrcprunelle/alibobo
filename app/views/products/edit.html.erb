@@ -1,13 +1,19 @@
-<div class="container">
+<div class="container mt-4 px-5 position-relative">
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
   <%= simple_form_for @product do |f| %>
   <%= f.input :title %>
   <%= f.input :price %>
-  <%= f.input :category %>
+  <%= f.input :category, collection: ["Travel", "Electronics", "Men's clothing", "Jewelery", "Women's clothing", "Sport", "Food", "Cosmetic", "+18", "Other"] %>
   <%= f.input :description %>
   <%= f.input :rating, collection: 1..5 %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit "Edit my product" %>
+  <%= f.submit "Edit my product", class: "btn btn-primary" %>
 <% end %>
-  <button> <%= link_to "Go back", product_path(@product) %></button>
+ <%= link_to product_path(@product), class: "btn btn-outline-secondary rounded-circle position-absolute top-0 start-0" do %>
+  <i class="fas fa-arrow-left"></i>
+<% end %>
+   </div>
+  </div>
 
 </div>

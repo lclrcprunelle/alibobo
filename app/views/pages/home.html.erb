@@ -12,17 +12,27 @@
   </div>
 </div>
 
-<div class= "back">
-<div class="container">
-      <h1 class=" back pt-5">Top products to rent</h1>
-
- <% @products.sample(3).each do |product| %>
-  <div class="card col-3 gap-3">
-    <% if product.photo.attached? %>
-    <%= cl_image_tag product.photo.key, class: "card-img-top" %>
-      <% else %>
-        <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap">
-    <% end %>
+<div class="back">
+  <div class="container">
+    <h1 class="back pt-5 text-center">Top products to rent</h1>
+    <div class="d-flex flex-wrap justify-content-center">
+      <% @products.sample(6).each do |product| %>
+        <div class="card border-light p-3 col-10 col-md-5 col-lg-3 m-3 shadow-sm" style="border-radius: 10px; transition: transform 0.3s;">
+          <% if product.photo.attached? %>
+            <%= cl_image_tag product.photo.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
+          <% else %>
+            <img class="card-img-top object-fit-contain p-2" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Default product image" style="width: 100%; height: 150px;">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title line-clamp-1 product-title"><%= product.title.capitalize %></h5>
+            <p class="product-category "><i class="fa-solid fa-tag"></i> <%= product.category.upcase %></p>
+            <p class="product-price"><small class="text-dark"><i class="fa-solid fa-dollar-sign"></i> <%= product.price %></small></p>
+            <div class="card-body text-center">
+              <%= link_to "View details", product_path(product), class: "btn btn-flat", style: "border: 1px solid #000; padding: 10px 20px; border-radius: 5px;" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
 
