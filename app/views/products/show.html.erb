@@ -23,6 +23,14 @@
           <h2><strong><%= @product.title %></strong></h2>
           <h3 class="my-3"> $ <span data-booking-form-target="price" data-price="<%= @product.price %>"><%= @product.price %></span> / day</h3>
           <h6 class="my-3 overflow-auto" style="height: 100px"><%= @product.description %></h6>
+
+            <div class="d-flex">
+              <% if @product.rating.present? %>
+                <% (1..5).each do |i| %>
+                   <p><i class="<%= i <= @product.rating ? 'fa-solid' : 'fa-regular' %> fa-star"></i></p>
+                <% end %>
+              <% end %>
+            </div>
         </div>
         <div class="buttons d-flex justify-content-between">
           <% if @product.user != current_user %>
