@@ -3,19 +3,24 @@
   <div class="justify-content-between py-4" style="height: 50%">
   <div class="container">
     <div class="img-container">
-
-        <%= cl_image_tag @product.photos.first.key %>
-
-        <div class="right-part">
-          <% @product.photos[1..2].each do |img| %>
-            <div class="small-img">
-              <%= cl_image_tag img.key, class: "img" %>
-            </div>
-          <% end %>
-        </div>
+        <% if @product.photos.first != nil%>
+          <%= cl_image_tag @product.photos.first.key %>
+          <div class="right-part">
+            <% @product.photos[1..2].each do |img| %>
+              <div class="small-img">
+                <%= cl_image_tag img.key, class: "img" %>
+              </div>
+            <% end %>
+          </div>
+        <%end %>
 
     </div>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 907f2e12a68b478c77108dd6073719d85f44138a
     <div class="card shadow h-auto bg bg-light" style="width: 100%">
 
       <div class="card-body d-flex flex-column justify-content-between h-auto">
