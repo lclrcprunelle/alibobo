@@ -1,10 +1,6 @@
 require 'open-uri'
 require 'faker'
 
-# BASE_URL = 'https://fakestoreapi.com/products'
-# response = URI.open(BASE_URL).read
-# data = JSON.parse(response)
-
 object_names = [
   "Apple", "Book", "Chair", "Desk", "Pen", "Laptop", "Mug", "Bottle", "Lamp", "Phone",
   "Clock", "Speaker", "Remote", "Keyboard", "Mouse", "Tablet", "Notebook", "Backpack", "Wallet", "Glass",
