@@ -20,13 +20,12 @@
 
 
 
-
 <div class="back">
   <div class="container">
     <h1 class="back pt-5 text-center">Top products to rent</h1>
-    <div class="d-flex flex-wrap justify-content-center">
+    <div class="d-flex flex-wrap justify-content-center ">
       <% @products.sample(6).each do |product| %>
-        <div class="card border-light p-3 col-10 col-md-5 col-lg-3 m-3 shadow-sm" style="border-radius: 10px; transition: transform 0.3s;">
+        <div class=" card p-3 col-10 col-md-5 col-lg-3 m-3 shadow-sm" style="border-radius: 10px; transition: transform 0.3s; background-color: #f0e3e1; border-style: none;">
           <% if product.photos.attached? %>
             <%= cl_image_tag product.photos.first.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
           <% else %>
