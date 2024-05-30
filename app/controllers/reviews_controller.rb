@@ -3,13 +3,20 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review = @product.reviews.new(review_params)
     @review.user = current_user
-    @review.product = @product
 
-    if @review.save
-      redirect_to product_path(@product), notice: "Review successfully added"
+    if @product.reviews.exists?(user_id: current_user.id)
+      flash[:alert] = "Vous avez déjà commenté ce produit."
+      redirect_to @product
     else
-      render "products/show", status: :unprocessable_entity
+      if @review.save
+        flash[:notice] = "Votre commentaire a été ajouté avec succès."
+        redirect_to @product
+      else
+        flash[:alert] = "Erreur lors de l'ajout de votre commentaire."
+        render 'products/show'
+      end
     end
   end
 

@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :reserved_products, through: :bookings, source: :product
 
+  has_many :bookings_as_owner, through: :products, source: :bookings
+  has_many :bookings_as_lodger, class_name: "Booking", foreign_key: "user_id", dependent: :destroy
+
   has_one_attached :photo
 
   def full_name

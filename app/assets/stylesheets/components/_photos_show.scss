@@ -7,32 +7,33 @@
   width: 100%;
   height: 100%;
 }
- .img-container{
+.img-container {
   display: grid;
   grid-template-columns: 50% 50%;
   margin-bottom: 30px;
   gap: 5px;
 
-  img{
+  img {
     width: 100%;
     height: 620px;
+    object-fit: contain;
   }
 
-.right-part{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  height: 620px;
-  overflow-y: hidden;
-}
-  .small-img{
+  .right-part {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 620px;
+    overflow-y: hidden;
+  }
+  .small-img {
     width: 100%;
     height: 310px;
 
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
- }
+}

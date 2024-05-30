@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :product
   belongs_to :user
 
+  validates :status, inclusion: { in: %w[pending accepted declined] }
   validate :minimum_24h
   validate :not_in_past
 
