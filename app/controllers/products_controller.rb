@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @category = Category.new
 
     if params[:query].present?
-      @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:query]}%")
+      @products = @products.where("title ILIKE ?", "%#{params[:query]}%")
     end
 
 
