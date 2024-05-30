@@ -9,16 +9,35 @@
     </div>
     <% end %>
 
-------
-  <h6>Trier par prix</h6>
 
-  <input type="text" id="max-price-display" value="<%= params[:max_price] %>">
+<h4 class="mb-4 text-center">Trier par prix</h4>
 
-  <%= form_with url: products_path, method: :get do |f| %>
-    <%= f.text_field :query, value: params[:query] %>
-    <%= f.range_field :max_price, in: 0..1000, value: params[:max_price] %>
-    <%= f.button :submit %>
-  <% end %>
+<div class="container d-flex flex-column align-items-center">
+  <div class="col-md-6">
+    <%= form_with url: products_path, method: :get, class: "w-100" do |f| %>
+      <div class="input-group shadow-sm mb-3 w-100">
+        <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "What are you looking for?" %>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <%= form_with url: products_path, method: :get, class: "w-100" do |f| %>
+      <div class="input-group shadow-sm mb-3 w-100">
+        <label class="input-group-text" for="max-price-display">Maximum Price</label>
+        <input type="text" id="max-price-display" class="form-control" value="<%= params[:max_price] %>" placeholder="Enter max price">
+        <span class="input-group-text">$</span>
+      </div>
+      <div class="input-group mb-3 w-100">
+        <%= f.range_field :max_price, in: 0..1000, value: params[:max_price], class: "form-range", id: "max_price" %>
+      </div>
+      <div class="input-group mb-3 w-100">
+        <button type="submit" class="btn btn-primary">Apply</button>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
 
@@ -36,7 +55,7 @@
     updatePriceDisplay();
   });
 </script>
---------
+
 
 
   <div class="card-deck row row-cols-4 g-4">
