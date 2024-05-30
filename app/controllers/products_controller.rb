@@ -14,21 +14,30 @@ class ProductsController < ApplicationController
       @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:category]}%")
     end
 
-    
+
     if params[:max_price].present?
       min_price = 0
       max_price = params[:max_price].to_i
       @products = @products.where(price: min_price..max_price)
     end
-  
+
   end
 
   def show
-    @reviews = Review.all
+    @product = Product.find(params[:id])
+    @reviews = @product.reviews
     @users = User.all
     @booking = Booking.new
     @review = Review.new
-    @product = Product.find(params[:id])
+    @bookings = @product.bookings
+
+    @booking_dates = @bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
+
   end
 
   def new
