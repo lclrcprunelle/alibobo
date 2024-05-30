@@ -24,11 +24,20 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @reviews = Review.all
+    @product = Product.find(params[:id])
+    @reviews = @product.reviews
     @users = User.all
     @booking = Booking.new
     @review = Review.new
-    @product = Product.find(params[:id])
+    @bookings = @product.bookings
+
+    @booking_dates = @bookings.map do |booking|
+      {
+        from: booking.start_date,
+        to: booking.end_date
+      }
+    end
+
   end
 
   def new
