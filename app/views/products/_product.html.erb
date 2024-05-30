@@ -1,12 +1,12 @@
-<div class="col">
-  <div class="card bg-light">
+<div class="col ">
+  <div class="card border-light" style="border-radius: 10px; transition: transform 0.3s; background-color: #f0e3e1; border-style: none;">
     <% if product.photos.attached? %>
       <%= cl_image_tag product.photos.first.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
     <% else %>
       <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap" width=10% height=10%>
     <% end %>
 
-    <div class="card-body bg-light pb-0">
+    <div class="card-body pb-0">
         <h5 class="card-title line-clamp-1 product-title"><%= product.title.capitalize %></h5>
         <p class="card-text line-clamp-2 product-description"><%= product.description %></p>
         <p class="product-category"><i class="fa-solid fa-tag"></i> <%= product.category.name %></p>
