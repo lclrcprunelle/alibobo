@@ -11,6 +11,12 @@
 @import "components/index";
 @import "pages/index";
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
 
 .footer {
   background: linear-gradient(90deg, rgb(38, 25, 25), rgb(158, 121, 121) 70%);
@@ -20,6 +26,7 @@
   height: 60px;
   padding: 0px 50px;
   color: rgba(255, 252, 252, 0.5);
+
 }
 .footer-links {
   display: flex;

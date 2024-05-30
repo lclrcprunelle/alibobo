@@ -15,7 +15,7 @@
     <% end %>
   </div>
 
-  <div class="card-deck row row-cols-4 g-4">
+  <div class="card-deck mb-3 row row-cols-4 g-4">
     <%= render partial: "product", collection: @products, as: :product, locals: { category: @category } %>
   </div>
 </div>
