@@ -1,9 +1,20 @@
 <div class="container position-relative">
-  <h1 class="text-center my-4">My bookings</h1>
+  <h1 class="text-center my-4">My bookings (as owner)</h1>
   <div class="row">
-    <% if @bookings.length >= 1 %>
-      <% @bookings.each do |booking| %>
+    <% if current_user.bookings_as_owner.length >= 1 %>
+      <% current_user.bookings_as_owner.each do |booking| %>
         <%= render booking  %>
+      <% end %>
+    <% else %>
+      <h6 class="text-center">No bookings yet</h6>
+    <% end %>
+  </div>
+
+  <h1 class="text-center my-4">My bookings (as lodger)</h1>
+  <div class="row">
+    <% if current_user.bookings_as_lodger.length >= 1 %>
+      <% current_user.bookings_as_lodger.each do |booking| %>
+        <%= render 'bookings/bookingLodger', booking: booking %>
       <% end %>
     <% else %>
       <h6 class="text-center">No bookings yet, <%= link_to "All products", products_path %></h6>
