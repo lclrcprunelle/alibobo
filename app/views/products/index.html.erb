@@ -3,59 +3,19 @@
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://live.staticflickr.com/2184/2243088749_6688158d31_c.jpg)">Our products</div>
   </div>
 
-  <%= form_with url: products_path, method: :get, html: { onchange: "this.requestSubmit()" } do |f| %>
-    <%= f.select :category, options_for_select(Category.all.map { |p| [ p.name, p.name ] }, selected: params[:category]) %>
-  <% end %>
+  <h4 class="mb-4 text-center">Trier par prix</h4>
 
-  <h6>Trier par prix</h6>
-
-
-<h4 class="mb-4 text-center">Trier par prix</h4>
-
-<div class="container d-flex flex-column align-items-center">
-  <div class="col-md-6">
-    <%= form_with url: products_path, method: :get, class: "w-100" do |f| %>
-      <div class="input-group shadow-sm mb-3 w-100">
-        <%= f.text_field :query, value: params[:query], class: "form-control", placeholder: "What are you looking for?" %>
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="col-md-6">
-    <%= form_with url: products_path, method: :get, class: "w-100" do |f| %>
-      <div class="input-group shadow-sm mb-3 w-100">
+  <div class="py-4">
+    <%= form_with url: products_path, method: :get, class: "d-flex align-items-center", html: { onchange: "this.requestSubmit()" } do |f| %>
+      <%= f.text_field :query, value: params[:query], class: "form-control mx-1" %>
+      <%= f.select :category, options_for_select(Category.all.map { |p| [ p.name, p.name ] }, selected: params[:category]), {}, class: "form-select mx-1" %>
+      <div class="input-group shadow-sm w-100 mx-1">
         <label class="input-group-text" for="max-price-display">Maximum Price</label>
-        <input type="text" id="max-price-display" class="form-control" value="<%= params[:max_price] %>" placeholder="Enter max price">
+        <%= f.number_field :max_price, value: params[:max_price], min: 0, max: 1000, step: 10, placeholder: "Enter max price", class: "form-control" %>
         <span class="input-group-text">$</span>
       </div>
-      <div class="input-group mb-3 w-100">
-        <%= f.range_field :max_price, in: 0..1000, value: params[:max_price], class: "form-range", id: "max_price" %>
-      </div>
-      <div class="input-group mb-3 w-100">
-        <button type="submit" class="btn btn-primary">Apply</button>
-      </div>
     <% end %>
   </div>
-</div>
-
-
-<script>
-  function updatePriceDisplay() {
-
-    document.getElementById('max-price-display').value = document.getElementById('max_price').value;
-  }
-
-  document.addEventListener("DOMContentLoaded", function() {
-    updatePriceDisplay();
-  });
-
-  document.getElementById('max_price').addEventListener("change", function() {
-    updatePriceDisplay();
-  });
-</script>
-
-
 
   <div class="card-deck row row-cols-4 g-4">
     <%= render partial: "product", collection: @products, as: :product, locals: { category: @category } %>
