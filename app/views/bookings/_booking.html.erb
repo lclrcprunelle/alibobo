@@ -1,8 +1,18 @@
 <div class="col">
   <div class="position-relative card bg-light">
-    <div class="position-absolute top-3 end-3 rounded-pill bg-warning p-2">
-      <%= booking.status.capitalize %>
-    </div>
+    <% if booking.status == "pending" %>
+      <div class="position-absolute top-3 end-3 rounded-pill bg-warning p-2">
+        <%= booking.status.capitalize %>
+      </div>
+    <% elsif booking.status == "accepted" %>
+      <div class="position-absolute top-3 end-3 rounded-pill bg-success p-2 text-light">
+        <%= booking.status.capitalize %>
+      </div>
+    <% else %>
+      <div class="position-absolute top-3 end-3 rounded-pill bg-danger p-2">
+        <%= booking.status.capitalize %>
+      </div>
+    <% end %>
 
     <% if booking.product.photos.attached? %>
       <%= cl_image_tag booking.product.photos.first.key, class: "card-img-top object-fit-contain p-2", height: 150 %>
@@ -19,13 +29,14 @@
         <p>To: <%= booking.end_date.strftime("%A %d %B") %></p>
         <p>Total day: <%= (booking.end_date - booking.start_date).to_i  %> days</p>
         <% remaining_days = (booking.end_date - Date.today).to_i %>
-        <%= remaining_days > 0 ? "#{remaining_days} days left" : "Réservation terminée" %>
-        <%= link_to "View details", product_path(booking.product), class: "btn btn-flat", style: "border: 1px solid #000; padding: 10px 20px; border-radius: 5px;" %>
-
+        <%= remaining_days > 0 ? "#{remaining_days} days left" : "Réservation terminée" %> <br>
+        <div class="d-flex justify-content-center">
+          <%= link_to "View details", product_path(booking.product), class: "btn btn-flat", style: "border: 1px solid #000; padding: 10px 20px; border-radius: 5px;" %>
+        </div>
     </div>
 
     <% if booking.status == "pending" %>
-      <div class="d-flex mt-3">
+      <div class="d-flex mt-3 justify-content-center">
         <%= button_to "Accepter", accept_booking_path(booking), method: :patch, class: "btn btn-success mx-3" %>
         <%= button_to "Refuser", decline_booking_path(booking), method: :patch, class: "btn btn-danger" %>
       </div>

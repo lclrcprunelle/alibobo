@@ -10,7 +10,7 @@
       <img class="card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap" width=10% height=10%>
     <% end %>
 
-    <div class="bg-light pb-0 position-relative">
+    <div class="card-body bg-light pb-0 ">
         <h5 class="card-title line-clamp-1 product-title"><%= booking.product.title.capitalize %></h5>
         <p class="card-text line-clamp-3 product-description"><%= booking.product.description %></p>
         <p class="product-category"><i class="fa-solid fa-tag"></i> <%= booking.product.category.name.upcase %></p>
@@ -20,7 +20,8 @@
         <p>Total day: <%= (booking.end_date - booking.start_date).to_i  %> days</p>
         <% remaining_days = (booking.end_date - Date.today).to_i %>
         <%= remaining_days > 0 ? "#{remaining_days} days left" : "Réservation terminée" %>
-        <%= link_to "View details", product_path(booking.product), class: "btn btn-flat", style: "border: 1px solid #000; padding: 10px 20px; border-radius: 5px;" %>
-    </div>
+        <div class="d-flex justify-content-center">
+          <%= link_to "View details", product_path(booking.product), class: "btn btn-flat", style: "border: 1px solid #000; padding: 10px 20px; border-radius: 5px;" %>
+        </div>    </div>
   </div>
 </div>
