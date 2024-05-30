@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @reviews = Review.all
+    @users = User.all
     @booking = Booking.new
     @review = Review.new
     @product = Product.find(params[:id])
