@@ -4,8 +4,15 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @category = Category.new
+
     if params[:query].present?
       @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:query]}%")
+    end
+    
+    if params[:max_price].present?
+      min_price = 0
+      max_price = params[:max_price].to_i
+      @products = @products.where(price: min_price..max_price)
     end
   end
 

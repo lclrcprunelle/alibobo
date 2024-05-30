@@ -9,6 +9,35 @@
     </div>
     <% end %>
 
+------
+  <h6>Trier par prix</h6>
+
+  <input type="text" id="max-price-display" value="<%= params[:max_price] %>">
+
+  <%= form_with url: products_path, method: :get do |f| %>
+    <%= f.text_field :query, value: params[:query] %>
+    <%= f.range_field :max_price, in: 0..1000, value: params[:max_price] %>
+    <%= f.button :submit %>
+  <% end %>
+
+
+
+<script>
+  function updatePriceDisplay() {
+
+    document.getElementById('max-price-display').value = document.getElementById('max_price').value;
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    updatePriceDisplay();
+  });
+
+  document.getElementById('max_price').addEventListener("change", function() {
+    updatePriceDisplay();
+  });
+</script>
+--------
+
 
   <div class="card-deck row row-cols-4 g-4">
     <%= render partial: "product", collection: @products, as: :product, locals: { category: @category } %>
