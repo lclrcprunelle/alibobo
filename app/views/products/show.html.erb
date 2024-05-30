@@ -25,13 +25,14 @@
 
 
 
-            <div class="d-flex">
-               <% if @product.rating.present? %>
-                <% (1..5).each do |i| %>
-                   <p><i class="<%= i <= @product.rating ? 'fa-solid' : 'fa-regular' %> fa-star"></i></p>
-                <% end %>
-              <% end %>
-            </div>
+  <div class="d-flex">
+      <% if @product.rating.present? %>
+          <% (1..5).each do |i| %>
+              <p><i class="<%= i <= @product.rating ? 'fa-solid' : 'fa-regular' %> fa-star"></i></p>
+          <% end %>
+           <p> <%= @reviews.count %> reviews</p>
+      <% end %>
+  </div>
 
 
 
