@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :products do
-    resources :bookings, only: %i[new create]
+    resources :bookings, only: %i[new create edit update]
     resources :reviews, only: [:new, :create]
 
     collection do
@@ -10,5 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bookings, only: :index
+  resources :alerts, only: :index
+
+  resources :bookings, only: :index do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
 end

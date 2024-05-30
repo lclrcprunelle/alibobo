@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon border">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon border sticky-top">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logogo.png" %>
@@ -21,19 +21,22 @@
             <%= link_to "Rent a product",new_product_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="avatar position-relative" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% if current_user.photo.attached? %>
-             <%= cl_image_tag current_user.photo.key, class:"avatar" %>
+             <%= cl_image_tag current_user.photo.key, class:"avatar " %>
               <% else %>
-             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar ", alt: "dropdown menu" %>
             <% end %>
+              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                <span class="visually-hidden">New alerts</span>
+              </span>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <p class="text-center border-bottom pb-1"><strong><%= current_user.full_name%></strong></p>
               <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
               <%= link_to "My products", myProducts_products_path, class: "dropdown-item" %>
+              <%= link_to "Alert", alerts_path, class: "dropdown-item" %>
               <%= link_to "<i class='fa-solid fa-right-to-bracket'></i>".html_safe + "  Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-danger " %>
-
             </div>
 
           </li>

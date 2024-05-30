@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_product, only: [:new, :create]
+  before_action :set_product, only: %i[new create]
 
   def index
     @bookings = Booking.where(user: current_user)
@@ -21,6 +21,30 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    @booking.product = @product
+    @booking.user = current_user
+    redirect_to bookings_path
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "accepted")
+    redirect_to bookings_path
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "declined")
+    redirect_to bookings_path
+  end
+
   private
 
   def set_product
@@ -28,6 +52,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :total_price)
+    params.require(:booking).permit(:start_date, :end_date, :total_price, :status)
   end
 end
