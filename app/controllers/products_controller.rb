@@ -4,8 +4,13 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @category = Category.new
+
     if params[:query].present?
       @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    if params[:category].present?
+      @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:category]}%")
     end
   end
 

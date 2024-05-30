@@ -1,16 +1,13 @@
-<div class="container mt-3">
+<div class="container mt-3" data-controller="dropdown-menu">
   <div class="row pb-3">
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://live.staticflickr.com/2184/2243088749_6688158d31_c.jpg)">Our products</div>
   </div>
 
-  <%= form_tag(action: :create) do %>
-    <div class="input-group">
-      <%= select_tag :category, options_for_select(Category.all.map { |p| [ p.name, p.id ] }) %>
-    </div>
-    <% end %>
+  <%= form_with url: products_path, method: :get, html: { onchange: "this.requestSubmit()" } do |f| %>
+    <%= f.select :category, options_for_select(Category.all.map { |p| [ p.name, p.name ] }, selected: params[:category]) %>
+  <% end %>
 
-
-  <div class="card-deck row row-cols-4 g-4">
+  <div class="card-deck row row-cols-4 g-4" data-dropdown-menu-target="items">
     <%= render partial: "product", collection: @products, as: :product, locals: { category: @category } %>
   </div>
 </div>

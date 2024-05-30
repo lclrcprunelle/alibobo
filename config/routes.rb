@@ -9,6 +9,5 @@ Rails.application.routes.draw do
       get 'myProducts'
     end
   end
-
   resources :bookings, only: :index
 end
