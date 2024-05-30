@@ -3,14 +3,17 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    @products = Product.all
+    @category = Category.new
     if params[:query].present?
       @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:query]}%")
     end
   end
 
   def show
+    @reviews = Review.all
+    @users = User.all
     @booking = Booking.new
+    @review = Review.new
     @product = Product.find(params[:id])
   end
 
@@ -57,6 +60,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :price, :category_id, :description, :rating, photos: [])
+    params.require(:product).permit(:title, :price, :category_id, :description, photos: [])
   end
 end
