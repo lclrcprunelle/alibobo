@@ -43,7 +43,7 @@ categories_mapping = {
   "women's clothing" => "Women's clothing"
 }
 
-50.times do |i|
+20.times do |i|
   product = {
     "title" => object_names[i],
     "price" => Faker::Commerce.price(range: 10.0..100.0),
