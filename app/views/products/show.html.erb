@@ -25,12 +25,12 @@
         </div>
       </div>
 
-  <div class="d-flex">
+  <div class="d-flex mx-3">
       <% if @product.rating.present? %>
           <% (1..5).each do |i| %>
               <p><i class="<%= i <= @product.rating ? 'fa-solid' : 'fa-regular' %> fa-star"></i></p>
           <% end %>
-           <p> <%= @reviews.count %> reviews</p>
+           <p class="mx-2"> <%= @reviews.count %> reviews</p>
       <% end %>
   </div>
 
@@ -38,8 +38,8 @@
 
     <div>
   <% @product.reviews.each do |review| %>
-    <div class="d-flex align-items-center mb-3">
-      <div class="me-3">
+    <div class="d-flex align-items-center mb-4">
+      <div class="me-3 mx-4">
         <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <% if review.user.photo.attached? %>
             <%= cl_image_tag review.user.photo.key, class: "avatar" %>
@@ -66,7 +66,7 @@
 
 
 
-        <div class="buttons d-flex justify-content-start">
+        <div class="buttons d-flex justify-content-start px-2 pb-2">
           <% if @product.in? current_user.reserved_products %>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewModal">
               Add a review

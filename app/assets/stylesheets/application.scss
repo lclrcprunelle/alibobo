@@ -27,12 +27,13 @@ body {
   height: 60px;
   padding: 0px 50px;
   color: rgba(255, 252, 252, 0.5);
-
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: rgb(255, 253, 253);
   opacity: 0.5;
@@ -40,11 +41,12 @@ body {
   font-size: 24px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
   opacity: 1;
+  color: rgb(246, 215, 200);
 }
 
 .footer-copyright {
-  color: rgb(113, 112, 112)
-  font
+  color: rgb(246, 215, 200);
 }
