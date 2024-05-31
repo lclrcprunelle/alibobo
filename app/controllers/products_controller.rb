@@ -6,14 +6,17 @@ class ProductsController < ApplicationController
     @category = Category.new
 
     if params[:query].present?
-      @products = @products.where("title ILIKE ?", "%#{params[:query]}%")
+      sql_subquery = <<~SQL
+        products.title ILIKE :query
+        OR products.description ILIKE :query
+        OR categories.name ILIKE :query
+      SQL
+      @products = @products.joins(:category).where(sql_subquery, query: "%#{params[:query]}%")
     end
-
 
     if params[:category].present?
       @products = @products.joins(:category).where("name ILIKE ?", "%#{params[:category]}%")
     end
-
 
     if params[:max_price].present?
       min_price = 0

@@ -6,7 +6,7 @@
   <div class="py-4">
     <%= form_with url: products_path, method: :get, class: "d-flex align-items-center", html: { onchange: "this.requestSubmit()" } do |f| %>
       <%= f.text_field :query, value: params[:query], class: "form-control mx-1" %>
-      <%= f.select :category, options_for_select(Category.all.map { |p| [ p.name, p.name ] }, selected: params[:category]), {}, class: "form-select mx-1" %>
+      <%= f.select :category, options_for_select(Category.all.map { |p| [ p.name, p.name ] }.unshift(["Select a category", ""]), selected: params[:category]), {}, class: "form-select mx-1" %>
       <div class="input-group shadow-sm w-100 mx-1">
         <label class="input-group-text" for="max-price-display">Maximum Price</label>
         <%= f.number_field :max_price, value: params[:max_price], min: 0, max: 1000, step: 10, placeholder: "Enter max price", class: "form-control" %>

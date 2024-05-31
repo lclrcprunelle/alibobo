@@ -2,7 +2,7 @@
 <div class="col ">
   <div class="container-front">
     <%= link_to product_path(product) do %>
-      <div class="card-front" >
+      <div class="card-front">
         <% if product.photos.attached? %>
           <%= cl_image_tag product.photos.first.key, class: "img-card card-img-top object-fit-contain p-2", height: 150 %>
         <% else %>
