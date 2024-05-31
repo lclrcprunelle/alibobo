@@ -1,17 +1,17 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.lonelyplanet.fr/s3fs-public/styles/wide/public/2023-12/souks.jpg.webp?itok=qiNx1jRI);">
+<div class="banner" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 95%, rgba(244, 240, 239, 1) 100%), url(https://img.lonelyplanet.fr/s3fs-public/styles/wide/public/2023-12/souks.jpg.webp?itok=qiNx1jRI);">
   <div class="container">
     <h1><strong>AliBobo</strong></h1>
     <p>Rent everything you want</p>
       <div class="row">
-        <div class="col-sm-8 my-3">
+        <div class="col-sm-8 my-3 form-outline" data-mdb-input-init>
           <%= form_with url: products_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query,
                 params[:query],
-                class: "form-control",
+                class: "form-control border border-light bg bg-transparent text-light rounded-left",
                 placeholder: "What do you want ?"
             %>
-          <%= submit_tag "Search", name: "", class: "btn btn-outline-light" %>
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <%= submit_tag "Search", name: "", class: "btn-search btn btn-light fw-bold rounded-right" %>
+            <%# <i class="fa-solid fa-magnifying-glass"></i> %>
           <% end %>
         </div>
       </div>
