@@ -82,7 +82,6 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(20deg);
   width: 100px;
-
 }
 
 .card-body-front {
@@ -157,7 +156,6 @@
   background: #e0bfbf;
 }
 
-
 .card-front:hover .card-body-link .card-link {
   opacity: 1;
   transform: translateY(0px);
@@ -179,5 +177,5 @@
   font-size: 2em;
   font-weight: bold;
   text-align: center;
-  border-radius: 20px
+  border-radius: 20px;
 }
