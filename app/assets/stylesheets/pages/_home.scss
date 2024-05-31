@@ -15,13 +15,13 @@
 }
 
 .footer {
-  background: #F4F4F4;
+  background: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  color: rgba(0, 0, 0, 0.3);
 }
 .footer-links {
   display: flex;
@@ -39,6 +39,19 @@
 }
 
 .footer-copyright {
-  color: rgb(113, 112, 112)
+  color: rgb(113, 112, 112);
 }
 
+.nav {
+  border-top-left-radius: 5px !important ;
+  border-bottom-left-radius: 5px !important ;
+  border-top-right-radius: 0 !important ;
+  border-bottom-right-radius: 0 !important ;
+}
+
+.nav-btn {
+  border-top-left-radius: 0 !important ;
+  border-bottom-left-radius: 0 !important ;
+  border-top-right-radius: 5px !important ;
+  border-bottom-right-radius: 5px !important ;
+}
