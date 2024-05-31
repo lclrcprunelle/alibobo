@@ -1,44 +1,31 @@
-// Specific CSS for your home-page
-
-.btn-outline-light:hover {
-  background-color: white;
-  color: #000;
-  text-decoration: none;
-}
-
-.back {
-  background-color: rgb(244, 240, 239);
-}
-
-.card-front h1 {
-  color: black;
-}
 
 .footer {
-  background: #F4F4F4;
+  background: linear-gradient(270deg, #DBBFBA, #F7F5F3 80%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 60px;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  color: rgba(246, 215, 200, 0.9);
 }
+
 .footer-links {
+  color: rgb(246, 215, 200);
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
-  color: black;
-  opacity: 0.15;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
+  color: rgb(246, 215, 200);
   opacity: 1;
 }
 
 .footer-copyright {
-  color: rgb(113, 112, 112)
+  color: rgb(246, 215, 200);
 }
-
