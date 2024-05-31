@@ -1,8 +1,18 @@
 <div class="col">
   <div class="position-relative card bg-light">
-    <div class="position-absolute top-3 end-3 rounded-pill bg-warning p-2">
-      <%= booking.status.capitalize %>
-    </div>
+        <% if booking.status == "pending" %>
+      <div class="position-absolute top-3 end-3 rounded-pill bg-warning p-2">
+        <%= booking.status.capitalize %>
+      </div>
+    <% elsif booking.status == "accepted" %>
+      <div class="position-absolute top-3 end-3 rounded-pill bg-success p-2 text-light">
+        <%= booking.status.capitalize %>
+      </div>
+    <% else %>
+      <div class="position-absolute top-3 end-3 rounded-pill bg-danger p-2">
+        <%= booking.status.capitalize %>
+      </div>
+    <% end %>
 
     <% if booking.product.photos.attached? %>
       <%= cl_image_tag booking.product.photos.first.key, class: "card-img-top object-fit-contain p-2", height: 150 %>

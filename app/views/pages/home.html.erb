@@ -7,10 +7,10 @@
           <%= form_with url: products_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query,
                 params[:query],
-                class: "form-control border border-light bg bg-transparent text-light rounded-left",
+                class: "form-control border border-light bg bg-transparent text-light rounded-left nav",
                 placeholder: "What do you want ?"
             %>
-          <%= submit_tag "Search", name: "", class: "btn-search btn btn-light fw-bold rounded-right" %>
+          <%= submit_tag "Search", name: "", class: "btn-search btn btn-light fw-bold rounded-right nav-btn" %>
             <%# <i class="fa-solid fa-magnifying-glass"></i> %>
           <% end %>
         </div>
