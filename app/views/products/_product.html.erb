@@ -9,8 +9,8 @@
           <img class="img-card card-img-top" src="https://www.couturierparisien.fr/574-large_default/chemise-homme-blanche-popeline-de-coton-col-francais.jpg" alt="Card image cap" >
         <% end %>
         <div class="card-body-front">
-            <h3 class="card-title line-clamp-1 product-title"><%= product.title.capitalize %></h3>
-            <p class="card-text line-clamp-2 product-description"><%= product.description %></p>
+            <h3 class="card-title line-clamp-1 product-title overflow-hidden text-top" style="height: 20px"><%= product.title.capitalize %></h3>
+            <p class="card-text line-clamp-2 product-description px-2 overflow-auto" style="height: 60px"><%= product.description %></p>
             <p class="product-category"><i class="fa-solid fa-tag"></i> <%= product.category.name %></p>
             <p class="product-price"><small class="text-dark"><i class="fa-solid fa-dollar-sign"></i> <%= product.price %></small></p>
             <div class="d-flex-rating">
